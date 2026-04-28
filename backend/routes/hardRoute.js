@@ -2,14 +2,15 @@ const express = require("express");
 
 const app = express();
 
-const Simple = require("../module/simple")
+const Hard = require("../module/hard");
 
-// get all data  
+// get method for all data 
 
 app.get("/all", async (req, res) => {
 
     try {
-        const data = await Simple.find();
+
+        const data = await Hard.find();
         res.json(data);
     }
 
@@ -18,81 +19,95 @@ app.get("/all", async (req, res) => {
         res.status(500).json({ message: err.message });
 
     }
+
 });
 
-// get data by id 
+
+// get method for id data 
 
 app.get("/:id", async (req, res) => {
 
     try {
 
-        const data = await Simple.findById(req.params.id);
+        const data = await Hard.findById(req.params.id);
         res.json(data);
-        if (!data) return res.status(404).json({ message: "Not Found " });
+        if (!data) return res.status(404).json({ message: "Not Found" });
 
     }
+
     catch (err) {
 
         res.status(500).json({ message: err.message });
+
+
+
     }
 
 });
 
-// post ( add new  data )
+// post ( add new data )
 
 app.post("/add", async (req, res) => {
 
     try {
-        const savedata = await Simple.create(req.body);
 
+        const savedata = await Hard.create(req.body);
         res.status(201).json(savedata);
-
     }
+
     catch (err) {
         console.log(err);
+
     }
 });
 
-// put (update , data ) 
-
+// put ( update , data )
 
 app.put("/:id", async (req, res) => {
 
     try {
 
-        const updateddata = await Simple.findByIdAndUpdate(
+        const updateddata = await Hard.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
         );
-        if (!updateddata) return res.status(404).json({ mesagae: "Not Found" });
 
+        if (!updateddata) return res.status(404).json({ message: "Not Found" });
         res.json(updateddata);
 
     }
+
     catch (err) {
 
-
-        res.status(400).json({ message: err.message });
+        console.log(err);
+        res.status(404).json({ message: err.message });
 
     }
+
 });
 
+// delete ( delete  , data )
 
 app.delete("/:id", async (req, res) => {
 
+
     try {
-        const deleteddata = await Simple.findByIdAndDelete(req.params.id);
-        if (!deleteddata) return res.status(404).json({ message: "not Found" });
-        res.json({ message: "Medicine Deleted SuccessFully " });
+
+        const deletedata = await Hard.findByIdAndDelete(req.params.id);
+        if (!deletedata) return res.status(404).json({ message: "Not Found" });
+        res.json({ message: "Deleted SuccessFully..." });
+
 
     }
 
     catch (err) {
 
         res.status(500).json({ message: err.message });
+
     }
 
-})
+});
 
 module.exports = app;
+

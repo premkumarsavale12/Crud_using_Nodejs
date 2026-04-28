@@ -2,7 +2,6 @@
 const mongoose = require("mongoose");
 
 const simpleSchema = new mongoose.Schema({
-
     name: {
 
         type: String,

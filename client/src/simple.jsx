@@ -184,40 +184,40 @@ const Simple = () => {
                         <br />
                         <br />
                         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
-    <DialogTitle>Search Data</DialogTitle>
+                            <DialogTitle>Search Data</DialogTitle>
 
-    <DialogContent>
-        <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Father Name</TableCell>
-                    <TableCell>Mother Name</TableCell>
-                    <TableCell>City</TableCell>
-                    <TableCell>Address</TableCell>
-                </TableRow>
-            </TableHead>
+                            <DialogContent>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Name</TableCell>
+                                            <TableCell>Father Name</TableCell>
+                                            <TableCell>Mother Name</TableCell>
+                                            <TableCell>City</TableCell>
+                                            <TableCell>Address</TableCell>
+                                        </TableRow>
+                                    </TableHead>
 
-            <TableBody>
-                {data.map((item, index) => (
-                    <TableRow key={index}>
-                        <TableCell>{item.name}</TableCell>
-                        <TableCell>{item.fatherName}</TableCell>
-                        <TableCell>{item.motherName}</TableCell>
-                        <TableCell>{item.city}</TableCell>
-                        <TableCell>{item.address}</TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
-    </DialogContent>
+                                    <TableBody>
+                                        {data.map((item, index) => (
+                                            <TableRow key={index}>
+                                                <TableCell>{item.name}</TableCell>
+                                                <TableCell>{item.fatherName}</TableCell>
+                                                <TableCell>{item.motherName}</TableCell>
+                                                <TableCell>{item.city}</TableCell>
+                                                <TableCell>{item.address}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </DialogContent>
 
-    <DialogActions>
-        <Button onClick={handleClose} color="error">
-            Close
-        </Button>
-    </DialogActions>
-</Dialog>
+                            <DialogActions>
+                                <Button onClick={handleClose} color="error">
+                                    Close
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
 
                         <Grid item xs={12}>
                             <Box display="flex" gap={2} flexWrap="wrap" justifyContent="center">
